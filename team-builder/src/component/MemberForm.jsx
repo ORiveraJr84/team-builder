@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const MemberForm = ({ addMember }) => {
+const MemberForm = ({ addMember, memberToEdit }) => {
   const [teamMember, setTeamMember] = useState({
     name: "",
     email: "",
     role: "",
   });
+
+  console.log("Member To Edit", memberToEdit);
 
   const handleChange = (event) => {
     setTeamMember({ ...teamMember, [event.target.name]: event.target.value });

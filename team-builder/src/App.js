@@ -13,6 +13,8 @@ function App() {
     },
   ]);
 
+  const [memberToEdit, setMemberToEdit] = useState({});
+
   const addMember = (member) => {
     const newMember = {
       id: Date.now(),
@@ -25,9 +27,18 @@ function App() {
 
   return (
     <div className="App">
-      <MemberForm addMember={addMember} />
+      <MemberForm addMember={addMember} memberToEdit={memberToEdit} />
       {teamMember.map((member, index) => (
-        <Member key={index} member={member} />
+        <div key={index} className="memberCard">
+          <Member key={index} member={member} />
+          <button
+            onClick={() => {
+              setMemberToEdit(member);
+            }}
+          >
+            Edit
+          </button>
+        </div>
       ))}
     </div>
   );
